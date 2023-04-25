@@ -1,0 +1,43 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<!-- ======= End Page Header ======= -->
+{% load static %}
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        {% if messages %}
+        {% include 'website/include/message.html' %}
+        {% endif %}
+        {% load static %}
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2>Contact</h2>
+                <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas
+                    consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione
+                    sint. Sit quaerat ipsum dolorem.</p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Header -->
+
+
+<div class="row justify-content-center mt-4">
+
+    <div class="col-lg-2">
+        <form action="{% url 'home' %}" method="POST" role="form" class="php-email-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control fs-4" name="password" placeholder="Подтвердите код" required>
+                </div>
+                <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success p-2">Катталуу</button>
+                </div>
+            </div>
+        </form>
+    </div><!-- End Contact Form -->
+
+</div>
+
+{% endblock %}

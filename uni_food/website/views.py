@@ -6,6 +6,7 @@ from django.conf import settings
 from random import randint
 from django.contrib import messages
 import json
+from .models import ClientUser
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ def index(request):
             alldata = json.loads(data)
             print(alldata)
             if password == request.COOKIES.get('password'):
-                User.objects.create_user(username=dataAll['username'], first_name=dataAll['name'],
+                ClientUser.objects.create_user(username=dataAll['username'], first_name=dataAll['name'],
                                          last_name=dataAll['surname'],
                                          email=dataAll['email'], password=dataAll['password'])
                 user = authenticate(
@@ -67,11 +68,11 @@ def examination(request):
         # COOKIES
         if password == re_password:
             print('password')
-            if username == User.objects.filter(username=username):
+            if username == ClientUser.objects.filter(username=username):
                 messages.error(
                     request, 'Вы не можете добавлять, так как такой пользователь уже существует!!! ')
                 return redirect('sign_up')
-            elif email == User.objects.filter(email=email):
+            elif email == ClientUser.objects.filter(email=email):
                 messages.error(
                     request, 'Пользователь с такой почтой уже есть!! Поменяйте почту.')
                 return redirect('sign_up')

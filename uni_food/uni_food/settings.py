@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'uni_food.urls'
-
+AUTH_USER_MODEL='website.ClientUser'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -79,12 +80,8 @@ WSGI_APPLICATION = 'uni_food.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'realProject',
-        'PORT': '5432',
-        'HOST': 'localhost',
-        'USER': 'postgres',
-        'PASSWORD': 'sultan02'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':BASE_DIR / 'db.sqlite3',
     }
 }
 
